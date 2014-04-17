@@ -30,7 +30,7 @@ class GenerateXml {
     private function &convert($tag_name, $sources = array()) {
         $xml = $this->getXMLRoot();
         $node = $xml->createElement($tag_name);
-        if (is_array($sources)) {
+        if (!empty($sources) ) {
             if (is_array($sources[$tag_name])) {
                 $source = $sources[$tag_name];
                 // attributes
@@ -52,7 +52,7 @@ class GenerateXml {
 
             }
         }
-        if (is_array($sources)) {
+        if (!empty($sources) ) {
             if (is_array($sources[$tag_name])) {
                 $source = $sources[$tag_name];
                 foreach ( $source as $key => $value){
@@ -64,11 +64,7 @@ class GenerateXml {
                 }
             }
         }
-        if (is_array($sources)) {
-            if (is_array($sources[$tag_name])) {
-                
-            }
-        }
+
         return $node;
     }
 
@@ -85,7 +81,7 @@ class GenerateXml {
      * http://www.w3.org/TR/xml/#sec-common-syn
      */
 
-    private function isValidTagName($tag) {
+    public function isValidTagName($tag) {
         $pattern = '/^[a-z_]+[a-z0-9\:\-\.\_]*[^:]*$/i';
         return preg_match($pattern, $tag, $matches) && $matches[0] == $tag;
     }
