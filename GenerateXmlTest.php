@@ -3,7 +3,7 @@
 /**
  * Description of GenerateXmlTest
  *
- * @author gdp
+ * @author gregzorb
  */
 require_once 'source.php';
 require_once 'GenerateXml.php';
@@ -71,7 +71,6 @@ class GenerateXmlTest extends PHPUnit_Framework_TestCase {
     public function testXmlFile() {
         $xmlObject = $this->xmlClass->createXML($this->tag_name, $this->source);
         $xmlObject->formatOutput = true;
-        echo $xmlObject->save("tmp/actual.xml");
         $this->assertXmlFileEqualsXmlFile('test.xml', 'tmp/actual.xml');
     }
 
